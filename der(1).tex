@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+
+\begin{document}
+\title{The Compton Scattering Derivation}
+\maketitle
+\begin{flushleft}
+Consider a photon with energy $h\nu$ and momentum $h\nu/c$ striking an electron with energy $m_0c^2$ where $m_0$ is the rest mass of electron, and is at rest. Upon collision, you get a photon with a new energy $h\nu'$ and momentum $h\nu'/c$ at an angle $\theta$ and an electron with energy $\sqrt{p^2c^2 + m_0^2c^4}$ and momentum $p$ at an angle $\phi$. To find the difference in the wavelengths of the scattered and the incident photon we will use energy and momentum conservation laws. 
+\end{flushleft}
+\section{Energy conservation}
+
+\begin{equation}
+    h\nu + m_0 c^2 = h\nu' + \sqrt{p^2c^2 + m_0^2c^4}  \\
+\end{equation}
+
+\section{Momentum conservation in the x direction}
+
+\begin{equation}
+    h\nu/c = h\nu'\cos(\theta)/c  + p \cos(\phi) \\
+\end{equation}
+
+\section{Momentum conservation in the y direction}
+
+\begin{equation}
+    0 = h\nu' \sin(\theta) / c - p \sin(\phi) \\
+\implies p \sin(\phi) = h\nu' \sin(\theta) /c \\
+\end{equation}
+\begin{equation}
+\implies p = (h\nu' \sin(\theta) /  \sin(\phi)) /c  \\ 
+\implies \csc(\theta) =  \frac{pc}{h\nu' \sin(\theta)}
+\end{equation}
+\section{Deriving the equation for the wavelength}
+
+\text{Substituting equation (4) in equation (2)}
+\begin{equation}
+\implies h\nu /c = h\nu' \cos(\theta) / c + (h\nu' \sin(\theta)  \cos(\phi))/c\sin(\phi)
+\end{equation}
+\begin{equation}
+\implies h\nu /c = h\nu' \cos(\theta) / c + (h\nu' \sin(\theta) \cot(\phi))/c
+\end{equation}
+\begin{equation}
+\implies \cot(\phi) = \frac{\nu - \nu' \cos(\theta)}{\nu' \sin(\theta}
+\end{equation}
+\text{Using the trigonometric equation:}
+\begin{equation}
+   \csc^2 (\theta) = 1 + \cot^2(\theta) \\
+\implies   \frac{p^2c^2}{(h\nu' \sin(\theta))^2} = 1 + \frac{(\nu - \nu' \cos(\theta))^2}{(\nu' \sin(\theta))^2}
+\end{equation}
+\begin{equation}
+    p^2c^2 = h^2 \nu'^2 \sin^2(\theta) + h^2 (\nu - \nu'\cos(\theta))^2
+\end{equation}
+\text{Substituting eqn (9) in (1)}
+\begin{equation}
+  h\nu + m_0c^2 = h\nu' + \sqrt{h^2 \nu'^2 \sin^2(\theta) + h^2 (\nu - \nu'\cos(\theta))^2 + m_0^2c^4}  
+\end{equation}
+\begin{equation}
+\implies h^2(\nu - \nu')^2 + m_0^2c^4 + 2(h(\nu - \nu')*m_0c^2)= h^2 \nu'^2 \sin^2(\theta) + h^2 (\nu - \nu' \cos(\theta))^2 + m_0^2c^4 \\
+\end{equation}
+\begin{equation}
+\implies h^2(\nu^2 + \nu'^2 -2\nu\nu') + 2(h(\nu-\nu')*m_0c^2) = h^2\nu'^2\sin^2(\theta) + h^2(\nu^2 + \nu'^2\cos^2(\theta) - 2\nu\nu'\cos(\theta))
+\end{equation}
+
+\begin{equation}
+\implies h^2\nu^2+ h^2\nu'^2 -2h^2\nu\nu' + 2h\nu m_0c^2 - 2h\nu'm_0c^2 = h^2\nu'^2\sin^2(\theta) + h^2\nu^2 +h^2\nu'^2\cos^2(\theta) - 2h^2\nu\nu'\cos(\theta)
+\end{equation}
+\begin{equation}
+\implies 2h^2\nu\nu' (1-\cos(\theta)) = 2hm_0c^2 (\nu-\nu')
+\end{equation}
+\begin{equation}
+\nu = c/\lambda , \nu' = c/\lambda'
+\end{equation}
+\begin{equation}
+\implies \frac{4h^2c^2\sin^2(\theta/2)}{\lambda\lambda'} = 2h(c)(m_0c^2)(\frac{1}{\lambda}-\frac{1}{\lambda'})
+\end{equation}
+\begin{equation}
+\implies \frac{2h\sin^2(\theta/2)}{\lambda\lambda'} = m_0c(\frac{\lambda' - \lambda}{\lambda'\lambda})
+\end{equation}
+\begin{equation}
+\implies 2h\sin^2(\theta/2) = m_0c (\lambda' - \lambda)
+\end{equation}
+\begin{equation}
+\implies \lambda'-\lambda = \frac{2h\sin^2(\theta/2)}{m_0c}
+\end{equation}
+\begin{flushleft}
+We can also find the energy of the recoil electron
+\end{flushleft}
+\section{Energy of the recoil electron}
+\begin{equation}
+E_e = m_0c^2 + h(\nu-\nu')
+\end{equation}
+\text{Gain in the energy of recoil electron}
+\begin{equation}
+Gain = h(\nu-\nu')
+\end{equation}
+\end{document}
