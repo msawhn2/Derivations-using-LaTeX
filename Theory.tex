@@ -1,0 +1,436 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{braket}
+
+
+
+\begin{document}
+\title{Quantum Erasure in a Michelson's Interferometer: Theory}
+\maketitle
+
+
+\section{Theory}
+
+\subsection{Operators for Quarter Wave Plate and Half Wave Plate}
+\hspace{\parindent} A wave plate is a birefringent element that can add a phase between two orthogonal polarization components. If a wave plate's birefringent optic axis is along the horizontal or the vertical direction, the operator describing its action can be written as in the {H,V} basis as a Jones matrix $\hat{W}(\phi)$
+
+\[\hat{W}(\phi) = \begin{bmatrix}
+1&0\\
+0&e^{i\phi}\\
+\end{bmatrix}\]
+
+
+\begin{flushleft}{where $\phi$ is the phase added to the vertical component relative to the horizontal component.
+For a Quarter Wave Plate (QWP), $\phi = \pi/2$. To calculate the QWP operator, we will rotate the state of light by $\theta$, act with the Jones matrix and rotate it back. The rotation operator $\hat{R}(\theta)$ is:}
+\[\hat{R}(\theta) = \begin{bmatrix}
+\cos(\theta)&\sin(\theta)\\
+-\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}\]
+
+\begin{gather*}
+  \hat{QWP}(\theta) = \hat{R}(\theta)^T\hat{W}(\phi)\hat{R}(\theta)  
+\end{gather*}
+
+\text{where $\hat{R}(\theta)^T$ is the transpose of the rotation matrix}
+\end{flushleft}
+
+\[\hat{QWP}(\theta) = \begin{bmatrix}
+\cos(\theta)&\sin(\theta)\\
+-\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+1&0\\
+0&e^{i\pi/2}\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos(\theta)&\sin(\theta)\\
+-\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}
+\]
+
+
+\begin{equation}
+\hat{QWP}(\theta) = \begin{bmatrix}
+\cos^2(\theta)+i\sin^2(\theta)&(1-i)\cos(\theta)\sin(\theta)\\
+(1-i)\cos(\theta)\sin(\theta)&\sin^2(\theta)+i\cos^2(\theta)\\
+\end{bmatrix}
+\end{equation}
+
+{For a Half Wave Plate (HWP), $\phi = \pi$.}
+
+
+\[\hat{HWP}(\theta) = \begin{bmatrix}
+\cos(\theta)&\sin(\theta)\\
+-\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+1&0\\
+0&e^{i\pi}\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos(\theta)&\sin(\theta)\\
+-\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}\]
+
+\[\hat{HWP}(\theta) = \begin{bmatrix}
+\cos^2(\theta)-\sin^2(\theta)&2\sin(\theta)\cos(\theta)\\
+2\sin(\theta)\cos(\theta)&\sin^2(\theta)-\cos^2(\theta)\\
+\end{bmatrix}
+\]
+
+\text{We can simplify the HWP operator further using trigonometric identities}
+\begin{equation}
+\hat{HWP}(\theta) = \begin{bmatrix}
+\cos(2\theta)&\sin(2\theta)\\
+\sin(2\theta)&-\cos(2\theta)\\
+\end{bmatrix}
+\end{equation}
+
+
+\subsection{Phase difference between the two modes of the incoming state}
+\hspace{\parindent} A 50/50 beam splitter divides an incoming state $\ket{\psi}$ into two modes (reflected R and transmitted T) with equal amplitude. The reflected mode gets a $\pi/2$ relative phase shift, and the reflection also induces a polarization-dependent shift. In this section, we will find the phase difference between the two modes once they returned to the beam splitter as a function of wavelength and path length imbalance $\Delta{L}$.
+
+The Jones matrix associated with the mirror $\hat {r_m}$ and with the beam splitter $\hat {r_{beam}}$
+
+\[\hat{r_m} = \begin{bmatrix}
+1&0\\
+0&-1\\
+\end{bmatrix}
+\]
+
+\[\hat{r_{beam}} = \begin{bmatrix}
+i&0\\
+0&-i\\
+\end{bmatrix}
+\]
+
+\[d = e^{i4\pi\Delta{L}/\lambda}\begin{bmatrix}
+1&0\\
+0&1\\
+\end{bmatrix}\]
+
+To get the transmitted state, the incoming state is directly multiplied with the $\hat{r_m}$ as the beam splitter does not act on it. For the transmitted state: 
+
+\[\ket{\psi_{transmitted}} = \begin{bmatrix}
+1&0\\
+0&-1\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+\]
+
+To get the reflected state, the incoming state is multiplied with the the path length d and then with $\hat{beam}$ and then with $\hat{r_m}$. For the reflected state: 
+
+
+\[\ket{\psi_{reflected}} = e^{i4\pi\Delta{L}/\lambda}\begin{bmatrix}
+1&0\\
+0&1\\
+\end{bmatrix}
+\begin{bmatrix}
+1&0\\
+0&-1\\
+\end{bmatrix}
+\begin{bmatrix}
+i&0\\
+0&-i\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+\]
+
+\[\ket{\psi_{reflected}} = e^{i(4\pi\Delta{L}/\lambda + \pi/2)}\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}\]
+
+\begin{flushleft}
+Phase = $\frac{4\pi\Delta{L}}{\lambda} + \frac{\pi}{2}$
+\end{flushleft}
+
+
+
+\subsection{Calculating the state at Output 1 of the Michelson Interferometer}
+\hspace{\parindent} As shown in figure 1, at Output 1, there is a second reflection from $\ket{\psi_{transmitted}}$ where it goes through the beam splitter again. $\ket{\psi_{reflected}}$ in this case is the same as we computed in section 1.2.
+
+
+\[\ket{\psi_{transmitted}} = \begin{bmatrix}
+i&0\\
+0&-i\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
+\]
+
+\[\ket{\psi_{reflected}} =e^{i(4\pi\Delta{L})/\lambda} \begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
+\]
+
+\[E_{out} = \frac{1}{\sqrt{2}} \begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
++
+\frac{1}{\sqrt{2}} e^{i(4\pi\Delta{L})/\lambda} \begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
+\]
+
+\[E_{out} = \frac{1}{\sqrt{2}} (1+e^{i(4\pi\Delta{L})/\lambda}) \begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
+\]
+
+\[E^*_{out} = \frac{1}{\sqrt{2}} (1+e^{-i(4\pi\Delta{L})/\lambda}) \begin{bmatrix}
+i & 0\\
+\end{bmatrix}
+\]
+
+\begin{gather*}
+I_{out} = E^*_{out}E_{out}
+\end{gather*}
+
+\[I_{out} = \frac{1}{\sqrt{2}} (1+e^{i(4\pi\Delta{L})/\lambda}) \begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
+\frac{1}{\sqrt{2}} (1+e^{-i(4\pi\Delta{L})/\lambda}) \begin{bmatrix}
+i & 0\\
+\end{bmatrix}
+\]
+
+\begin{gather*}
+I_{out} = \frac{1}{2} (1+e^{i(4\pi\Delta{L})/\lambda}+1+e^{-i(4\pi\Delta{L})/\lambda})]
+\end{gather*}
+
+\begin{gather*}
+e^{i(4\pi\Delta{L})/\lambda}+e^{-i(4\pi\Delta{L})/\lambda} = 2 \cos(4\pi\Delta{L})/\lambda)
+\end{gather*}
+
+\begin{gather*}
+I_{out} = \frac{1}{2} (2+2\cos(4\pi\Delta{L})/\lambda)) 
+\end{gather*}
+
+\text{Taking the 2 common, we can apply the following trig identity}
+
+\begin{gather*}
+2\cos^2{(2\pi\Delta{L})/\lambda} = 1+\cos(2(2\pi\Delta{L})/\lambda))
+\end{gather*}
+
+\begin{gather*}
+I_{out} = 2\cos^2{(2\pi\Delta{L})/\lambda}
+\end{gather*}
+
+
+\subsection{ Determining the optic axis angles}
+
+\hspace{\parindent} If horizontally polarized light is incident on a quarter-wave plate, the optic axis should be set at 0 degrees to keep the light horizontally polarized. 
+
+
+\subsection{ Proving equivalence of two setups}
+
+\hspace{\parindent} Two quarter-wave plates with the same optic axis setting, $\theta_{1}$ in a row behaves as a half-wave plate also set at $\theta_{1}$. Provided, that one starts with a horizontal or vertical polarization state, this set up is equivalent to pasing through a quarter-wave plate, bouncing off a mirror and passing through the same QWP again. 
+
+
+\text{Proof:}
+
+\text{Setup 1: Two QWPs acting as a HWP:}
+
+\begin{gather*}
+    \hat{R_{\theta}}^{T}W(\pi/2)\hat{R_{\theta}}\hat{R_{\theta}}^{T}W(\pi/2)\hat{R_{\theta}}
+\end{gather*}
+
+\text{From (1), for a QWP operator:}
+\[\begin{bmatrix}
+\cos^2(\theta)+i\sin^2(\theta)&(1-i)\cos(\theta)\sin(\theta)\\
+(1-i)\cos(\theta)\sin(\theta)&\sin^2(\theta)+i\cos^2(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos^2(\theta)+i\sin^2(\theta)&(1-i)\cos(\theta)\sin(\theta)\\
+(1-i)\cos(\theta)\sin(\theta)&\sin^2(\theta)+i\cos^2(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+\]
+\[= \begin{bmatrix}
+\cos(2\theta)\\
+\sin(2\theta)\\
+\end{bmatrix}
+\]
+
+\text{This matches the HWP operator we derived in eqn (2)}
+\vspace{5mm}
+
+\text{Setup 2: QWP $->$ Mirror $->$ -QWP}
+
+\[\begin{bmatrix}
+1&0\\
+0&-1\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos(-\theta)&-\sin(-\theta)\\
+\sin(-\theta)&\cos(-\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos^2(\theta)+i\sin^2(\theta)&(1-i)\cos(\theta)\sin(\theta)\\
+(1-i)\cos(\theta)\sin(\theta)&\sin^2(\theta)+i\cos^2(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+\cos(\theta)&-\sin(\theta)\\
+\sin(\theta)&\cos(\theta)\\
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
+\]
+\[= \begin{bmatrix}
+(\cos^2(\theta)+i\sin^2(\theta))^2-2i\sin^2(\theta)\cos^2(\theta)\\
+(1-i)\cos(\theta)\sin(\theta)(-i\cos^2(\theta)-\sin^2(\theta))-(1-i)\cos(\theta)\sin(\theta)(\cos^2(\theta)+i\sin^2(\theta))\\
+\end{bmatrix}
+\]
+
+\text{This can be simplified using trig identity}
+\[= \begin{bmatrix}
+\cos(2\theta)\\
+-\sin(2\theta)\\
+\end{bmatrix}
+\]
+
+To change a horizontally polarized light into vertically polarized light, we need to set the QWP angle to 45 degrees.
+
+
+\subsection{ Calculating visibility of the Interferometer}
+\hspace{\parindent} Let us consider the case in which the two arms of the Michelson interferometer are orthogonally polarized by inserting a QWP in one of the arms with their angles set to 45 degrees. 
+\vspace{5 mm}
+\begin{flushleft}
+Reflected path with delay:
+\end{flushleft}
+
+\[\begin{bmatrix}
+ie^{\frac{4pi\pi\Delta{L}}{\lambda}}\\
+0\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+Transmitted path with QWP:
+\end{flushleft}
+\[\begin{bmatrix}
+0\\
+i\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+$\Delta{L} = 0$: Sum of reflected and transmitted paths:
+\end{flushleft}
+\[\begin{bmatrix}
+i\\
+0\\
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+i\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+i\\
+i\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+$\Delta{L} = \lambda/4$: Sum of reflected and transmitted paths:
+\end{flushleft}
+\[\begin{bmatrix}
+-i\\
+0\\
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+i\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+-i\\
+i\\
+\end{bmatrix}
+\]
+
+\begin{equation*}
+  Visibility = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}  
+\end{equation*}
+
+\begin{flushleft}
+In this case the visibility =0. Now, we calculated the visibility after adding the polarizer in ouput 1. The state after the polarizer is added:
+\end{flushleft}
+\[\begin{bmatrix}
+i\cos(\theta)(e^{\frac{4pi\pi\Delta{L}}{\lambda}}\cos(\theta)+\sin(\theta))\\
+i\sin(\theta)(e^{\frac{4pi\pi\Delta{L}}{\lambda}}\cos(\theta)+\sin(\theta))\\
+\end{bmatrix}
+\]
+
+\begin{flushleft}
+Intensity of the sum of two paths with $\Delta{L} = 0$:
+\vspace{5mm}
+
+H-Component:
+\end{flushleft}
+\[\begin{bmatrix}
+\cos^2(\theta)(\cos(\theta)+\sin(\theta))^2\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+V-Component:
+\end{flushleft}
+\[\begin{bmatrix}
+\sin^2(\theta)(\cos(\theta)+\sin(\theta))^2\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+Intensity of the sum of two paths with $\Delta{L} = 0$:
+\vspace{5mm}
+
+H-Component:
+\end{flushleft}
+\[\begin{bmatrix}
+\cos^2(\theta)(\cos(\theta)-\sin(\theta))^2\\
+\end{bmatrix}
+\]
+\begin{flushleft}
+V-Component:
+\end{flushleft}
+\[\begin{bmatrix}
+\sin^2(\theta)(\cos(\theta)-\sin(\theta))^2\\
+\end{bmatrix}
+\]
+
+\begin{equation*}
+  Visibility = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}  = 2\cos{\theta}\sin{\theta} = |\sin{2\theta}|
+\end{equation*}
+
+
+\end{document}
